@@ -4,6 +4,10 @@ var router = express.Router();
 const index_controller = require('../controllers/index_controller');
 
 /* GET home page. */
-router.get('/', index_controller.index_get);
+router.get('/', function(req, res, next) {
+  res.render('pages/index');
+});
+
+
 
 module.exports = router;
