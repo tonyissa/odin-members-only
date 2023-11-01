@@ -5,8 +5,7 @@ const asyncHandler = require("express-async-handler");
 
 // GET
 exports.become_member_get = asyncHandler(async(req, res, next) => {
-
-
+    
 })
 
 exports.become_admin_get = asyncHandler(async(req, res, next) => {
@@ -15,6 +14,11 @@ exports.become_admin_get = asyncHandler(async(req, res, next) => {
 })
 
 exports.create_story_get = asyncHandler(async(req, res, next) => {
+    
+
+})
+
+exports.log_out_get = asyncHandler(async(req, res, next) => {
     
 
 })

@@ -4,8 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 // GET
 exports.index_get = asyncHandler(async(req, res, next) => {
-
-
+    res.render('pages/index');
 })
 
 exports.sign_up_get = asyncHandler(async(req, res, next) => {
