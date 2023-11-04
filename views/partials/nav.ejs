@@ -1,21 +1,21 @@
 <header>
-    <nav class="navbar navbar-expand navbar-dark bg-dark pt-4">
-        <div class="container">
+    <nav class="navbar navbar-expand navbar-dark bg-dark pt-4 px-5">
+        <div class="container-fluid">
             <a href="/" class="navbar-brand"><strong><span style="color: rgb(102, 0, 255);">Members</span>Only</strong></a>
             <ul class="navbar-nav">
-                <% if (!locals.user) { %>
-                    <li class="nav-item">
-                        <a href="/sign-up" class="nav-link">Sign up</a>
+                <% if (!currentUser) { %>
+                    <li class="nav-item px-3">
+                        <a href="/sign-up" class="nav-link">SIGN UP</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="/sign-in" class="nav-link">Sign in</a>
+                    <li class="nav-item px-3">
+                        <a href="/sign-in" class="nav-link">SIGN IN</a>
                     </li>
                 <% } else { %>
-                    <li class="nav-item">
-                        <a href="/upgrade-account" class="nav-link">Upgrade Account</a>
+                    <li class="nav-item px-3">
+                        <a href="/upgrade-account" class="nav-link">UPGRADE ACCOUNT</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="/log-out" class="nav-link">Log out</a>
+                    <li class="nav-item px-3">
+                        <a href="/log-out" class="nav-link">LOG OUT</a>
                     </li>
                 <% } %>
             </ul>

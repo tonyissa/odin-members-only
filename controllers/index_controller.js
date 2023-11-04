@@ -5,6 +5,8 @@ const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require('bcryptjs');
 
+const passport = require("passport");
+
 // GET
 exports.index_get = asyncHandler(async(req, res, next) => {
     res.render('pages/index');
@@ -64,7 +66,7 @@ exports.sign_up_post = [
     })
 ]
 
-exports.sign_in_post = asyncHandler(async(req, res, next) => {
-    
-    res.redirect('/')
-})
+exports.sign_in_post = passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/sign-in"
+      })
