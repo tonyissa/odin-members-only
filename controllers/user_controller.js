@@ -13,8 +13,12 @@ exports.create_story_get = asyncHandler(async(req, res, next) => {
 })
 
 exports.log_out_get = asyncHandler(async(req, res, next) => {
-
-    res.redirect('/')
+    req.logout((err) => {
+        if (err) {
+          return next(err);
+        }
+        res.redirect("/");
+      });
 })
 
 // POST
