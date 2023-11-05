@@ -23,7 +23,7 @@ exports.log_out_get = asyncHandler(async(req, res, next) => {
 
 // POST
 exports.upgrade_account_post = asyncHandler(async(req, res, next) => {
-
+    
     res.redirect('/')
 })
 
