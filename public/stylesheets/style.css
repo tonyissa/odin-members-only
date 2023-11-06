@@ -8,3 +8,21 @@ body {
     font-size: 12px; 
     font-weight: 600;
 }
+
+@media (max-width: 1920px) {
+    .sm-display {
+        width: 33% !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .sm-display {
+        width: 55% !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .sm-display {
+        width: 88% !important;
+    }
+}

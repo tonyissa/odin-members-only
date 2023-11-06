@@ -32,14 +32,14 @@ exports.upgrade_account_post = [
             return next();
         }
 
-        if (req.body.code === "3!$#DA@!%") {
+        if (req.body.code === "3!$#DA@!%" && req.user.membership !== "Member") {
             await User.findByIdAndUpdate(req.user._id, { membership: "Member" });
             res.redirect('/');
         } else if (req.body.code === "EEWEVyKURtXc5dCYhJ5b") {
             await User.findByIdAndUpdate(req.user._id, { membership: "Admin" });
             res.redirect('/');
         } else {
-            res.render('pages/upgrade-account', { errors: [ { msg: "Account already upgraded" } ] });
+            res.render('pages/upgrade-account', { errors: [ { msg: "Code already has been used" } ] });
         }
     })
 ]

@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand navbar-dark bg-dark pt-4 px-5">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark pt-4 px-5">
         <div class="container-fluid">
             <a href="/" class="navbar-brand"><strong><span style="color: rgb(102, 0, 255);">Members</span>Only</strong></a>
             <% if (locals.currentUser) { %>
@@ -7,7 +7,7 @@
                     <span style="color: rgb(102, 0, 255);" class="navbar-text nav-custom"><%= currentUser.membership %></span></p>
             <% } %>
             <ul class="navbar-nav">
-                <% if (!currentUser) { %>
+                <% if (!locals.currentUser) { %>
                     <li class="nav-item px-3">
                         <a href="/sign-up" class="nav-link nav-custom">SIGN UP</a>
                     </li>
