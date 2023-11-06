@@ -23,6 +23,6 @@ body {
 
 @media (max-width: 800px) {
     .sm-display {
-        width: 88% !important;
+        width: 85% !important;
     }
 }
