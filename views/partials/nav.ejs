@@ -2,6 +2,10 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark pt-4 px-5">
         <div class="container-fluid">
             <a href="/" class="navbar-brand"><strong><span style="color: rgb(102, 0, 255);">Members</span>Only</strong></a>
+            <% if (locals.currentUser) { %>
+                <p class="navbar-text nav-custom mb-0">Membership status: 
+                    <span style="color: rgb(102, 0, 255);" class="navbar-text nav-custom"><%= currentUser.membership %></span></p>
+            <% } %>
             <ul class="navbar-nav">
                 <% if (!currentUser) { %>
                     <li class="nav-item px-3">
@@ -11,10 +15,6 @@
                         <a href="/sign-in" class="nav-link nav-custom">SIGN IN</a>
                     </li>
                 <% } else { %>
-                    <li class="nav-item px-3">
-                        <p class="navbar-text nav-custom">Membership status: 
-                            <span style="color: rgb(102, 0, 255);" class="navbar-text nav-custom"><%= currentUser.membership %></span></p>
-                    </li>
                     <li class="nav-item px-3">
                         <a href="/users/upgrade-account" class="nav-link nav-custom">UPGRADE ACCOUNT</a>
                     </li>

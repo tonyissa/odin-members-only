@@ -32,10 +32,10 @@ exports.upgrade_account_post = [
             return next();
         }
 
-        if (req.body.code === "3!$#DA@!%" && req.user.membership === "Unregistered") {
+        if (req.body.code === "3!$#DA@!%") {
             await User.findByIdAndUpdate(req.user._id, { membership: "Member" });
             res.redirect('/');
-        } else if (req.body.code === "EEWEVyKURtXc5dCYhJ5b" && req.user.membership !== "Admin") {
+        } else if (req.body.code === "EEWEVyKURtXc5dCYhJ5b") {
             await User.findByIdAndUpdate(req.user._id, { membership: "Admin" });
             res.redirect('/');
         } else {
