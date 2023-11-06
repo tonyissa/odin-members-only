@@ -5,17 +5,21 @@
             <ul class="navbar-nav">
                 <% if (!currentUser) { %>
                     <li class="nav-item px-3">
-                        <a href="/sign-up" class="nav-link">SIGN UP</a>
+                        <a href="/sign-up" class="nav-link nav-custom">SIGN UP</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="/sign-in" class="nav-link">SIGN IN</a>
+                        <a href="/sign-in" class="nav-link nav-custom">SIGN IN</a>
                     </li>
                 <% } else { %>
                     <li class="nav-item px-3">
-                        <a href="/users/upgrade-account" class="nav-link">UPGRADE ACCOUNT</a>
+                        <p class="navbar-text nav-custom">Membership status: 
+                            <span style="color: rgb(102, 0, 255);" class="navbar-text nav-custom"><%= currentUser.membership %></span></p>
                     </li>
                     <li class="nav-item px-3">
-                        <a href="/users/log-out" class="nav-link">LOG OUT</a>
+                        <a href="/users/upgrade-account" class="nav-link nav-custom">UPGRADE ACCOUNT</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="/users/log-out" class="nav-link nav-custom">LOG OUT</a>
                     </li>
                 <% } %>
             </ul>
