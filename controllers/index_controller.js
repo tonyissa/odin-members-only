@@ -8,15 +8,15 @@ const bcrypt = require('bcryptjs');
 const passport = require("passport");
 
 // GET
-exports.index_get = asyncHandler(async(req, res, next) => {
+exports.index_get = asyncHandler(async (req, res, next) => {
     res.render('pages/index');
 })
 
-exports.sign_up_get = asyncHandler(async(req, res, next) => {
+exports.sign_up_get = asyncHandler(async (req, res, next) => {
     res.render('pages/sign-up');
 })
 
-exports.sign_in_get = asyncHandler(async(req, res, next) => {
+exports.sign_in_get = asyncHandler(async (req, res, next) => {
     res.render('pages/sign-in');
 })
 
@@ -36,8 +36,8 @@ exports.sign_up_post = [
         }
         return true;
     }),
-    body('password').trim().notEmpty().withMessage('Password is required').isLength({min: 6}).withMessage('Password must be at least 6 characters long').escape(),
-    body('confirmPassword').trim().notEmpty().withMessage('Please confirm password').escape().custom((value, {req}) => {
+    body('password').trim().notEmpty().withMessage('Password is required').isLength({min: 6}).withMessage('Password must be at least 6 characters long'),
+    body('confirmPassword').trim().notEmpty().withMessage('Please confirm password').custom((value, {req}) => {
         if (value !== req.body.password) { 
             throw new Error('Passwords do not match');
         }
