@@ -29,6 +29,10 @@ body {
     color: rgb(145, 20, 151) !important;
 }
 
+thisisthecode {
+    display: none;
+}
+
 @media (max-width: 1800px) {
     .sm-display {
         width: 33% !important;

@@ -8,10 +8,12 @@
     <div class="container-fluid bg-dark flex-grow-1 p-2 p-sm-5">
       <div class="container sm-display w-25 pt-sm-5 px-sm-4 text-light d-flex flex-column align-content-center">
         <h1>Upgrade account?</h1>
+        <p class="overlay text-muted">Hint: Check the page source</p>
+        <thisisthecode>G7G7G7</thisisthecode>
         <form action="/users/upgrade-account" method="post" class="form d-flex flex-column">
           <div class="form-group">
             <label for="code" class="form-label">Enter code to upgrade account:</label>
-            <input type="text" class="form-control" name="code" />
+            <input type="text" class="form-control" name="code" placeholder="Code" />
           </div>
           <button type="submit" class="btn btn-primary mt-4">Submit</button>
           <% if (locals.errors) { %>

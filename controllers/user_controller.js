@@ -24,7 +24,7 @@ exports.log_out_get = asyncHandler(async (req, res, next) => {
 
 // POST
 exports.upgrade_account_post = [
-    body('code').notEmpty().withMessage('Code required').isIn(['', '3!$#DA@!%', "EEWEVyKURtXc5dCYhJ5b"]).withMessage('Passcode is not correct'),
+    body('code').notEmpty().withMessage('Code required').isIn(['', 'G7G7G7', process.env.ADMIN_CODE]).withMessage('Passcode is not correct'),
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
@@ -32,10 +32,10 @@ exports.upgrade_account_post = [
             return next();
         }
 
-        if (req.body.code === "3!$#DA@!%" && req.user.membership !== "Member") {
+        if (req.body.code === "G7G7G7" && req.user.membership !== "Member") {
             await User.findByIdAndUpdate(req.user._id, { membership: "Member" }).exec();
             res.redirect('/');
-        } else if (req.body.code === "EEWEVyKURtXc5dCYhJ5b") {
+        } else if (req.body.code === process.env.ADMIN_CODE && req.user.membership !== "Admin") {
             await User.findByIdAndUpdate(req.user._id, { membership: "Admin" }).exec();
             res.redirect('/');
         } else {
