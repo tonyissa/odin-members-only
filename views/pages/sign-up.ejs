@@ -11,19 +11,19 @@
         <form action="/sign-up" method="post" class="form d-flex flex-column">
           <div class="form-group">
             <label for="email" class="form-label">Email address:</label>
-            <input type="text" class="form-control" name="email" placeholder="Email" />
+            <input type="text" class="form-control" name="email" placeholder="Email" autocomplete="email" />
           </div>
           <div class="form-group">
             <label for="username" class="form-label">Desired username:</label>
-            <input type="text" class="form-control" name="username" placeholder="Username" />
+            <input type="text" class="form-control" name="username" placeholder="Username"/>
           </div>
           <div class="form-group">
             <label for="password" class="form-label">Password: <small>6 characters minimum</small></label>
-            <input type="password" class="form-control" name="password" placeholder="Password" />
+            <input type="password" class="form-control" name="password" placeholder="Password" autocomplete="new-password" />
           </div>
           <div class="form-group">
             <label for="confirmPassword" class="form-label">Confirm password:</label>
-            <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm password" />
+            <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm password" autocomplete="new-password" />
           </div>
           <button type="submit" class="btn btn-primary mt-4">Sign up</button>
           <% if (locals.errors) { %>
