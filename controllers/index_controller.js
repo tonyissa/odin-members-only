@@ -9,7 +9,8 @@ const passport = require("passport");
 
 // GET
 exports.index_get = asyncHandler(async (req, res, next) => {
-    res.render('pages/index');
+    const stories = await Story.find().populate('author').exec();
+    res.render('pages/index', { stories: stories.reverse() });
 })
 
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
@@ -23,14 +24,14 @@ exports.sign_in_get = asyncHandler(async (req, res, next) => {
 // POST
 exports.sign_up_post = [
     body('email').trim().notEmpty().withMessage('Email is required').isEmail().withMessage('Email is not valid').escape().custom(async (value) => {
-        const result = await User.find({email: value});
+        const result = await User.find({email: value}).exec();
         if (result.length > 0) {
             throw new Error('Email has already been taken');
         }
         return true;
     }),
     body('username').trim().notEmpty().withMessage('Username is required').escape().custom(async (value) => {
-        const result = await User.find({username: value});
+        const result = await User.find({username: value}).exec();
         if (result.length > 0) {
             throw new Error('Username has already been taken');
         }

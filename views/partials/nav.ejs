@@ -3,7 +3,7 @@
         <div class="container-fluid flex-column flex-sm-row">
             <a href="/" class="navbar-brand"><strong><span class="text-info">Members</span>Only</strong></a>
             <ul class="navbar-nav">
-                <% if (!locals.currentUser) { %>
+                <% if (!currentUser) { %>
                     <li class="nav-item px-3">
                         <a href="/sign-up" class="nav-link nav-custom">SIGN UP</a>
                     </li>
@@ -11,9 +11,10 @@
                         <a href="/sign-in" class="nav-link nav-custom">SIGN IN</a>
                     </li>
                 <% } else { %>
-                    <li class="px-3">
+                    <li class="px-3 user-select-none">
                         <p class="navbar-text nav-custom mb-0 fw-bold">Status:
-                            <span class="navbar-text nav-custom text-info"><%= currentUser.membership %></span></p>
+                            <span class="navbar-text nav-custom <%= currentUser.membership === 'Admin' ? 'text-primary' : 'text-info' %>">
+                                <%= currentUser.membership %></span></p>
                     </li>
                     <li class="nav-item px-3">
                         <a href="/users/create-story" class="nav-link nav-custom">CREATE STORY</a>

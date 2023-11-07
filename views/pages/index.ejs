@@ -5,8 +5,27 @@
   </head>
   <body class="vh-100 d-flex flex-column">
     <%- include('../partials/nav'); %>
-    <div class="container-fluid bg-dark flex-grow-1 p-2 p-sm-5 d-flex flex-column">
-      
+    <div class="container-fluid bg-dark flex-grow-1 p-2 p-sm-5 d-flex flex-column align-items-center">
+      <% stories.forEach(story => { %>
+        <div class="card my-2" style="color: rgb(197, 197, 197);">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h5 style="font-weight: 600;" class="card-title"><%= story.title %></h5>
+              <span style="font-size: 12px;" class="card-text fst-italic"><%= story.timestamp.toLocaleDateString() %></span>
+            </div>
+            <small class="fst-italic card-subtitle">by: 
+              <% if (currentUser) { %>
+                <span class="semibold <%= story.author.membership === 'Admin' ? 'text-primary' : 'text-info' %>"><%= story.author.username %></span>
+              <% } else { %>
+                <span class="blurry fw-bold"><%= story.author.blurry %></span>
+              <% } %>
+            </small>
+            <% if (story.msg) { %>
+              <p class="card-text mt-2"><%= story.msg %></p>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
     </div>
   </body>
 </html>

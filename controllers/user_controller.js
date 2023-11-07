@@ -33,10 +33,10 @@ exports.upgrade_account_post = [
         }
 
         if (req.body.code === "3!$#DA@!%" && req.user.membership !== "Member") {
-            await User.findByIdAndUpdate(req.user._id, { membership: "Member" });
+            await User.findByIdAndUpdate(req.user._id, { membership: "Member" }).exec();
             res.redirect('/');
         } else if (req.body.code === "EEWEVyKURtXc5dCYhJ5b") {
-            await User.findByIdAndUpdate(req.user._id, { membership: "Admin" });
+            await User.findByIdAndUpdate(req.user._id, { membership: "Admin" }).exec();
             res.redirect('/');
         } else {
             res.render('pages/upgrade-account', { errors: [ { msg: "Code already has been used" } ] });
@@ -56,7 +56,7 @@ exports.create_story_post = [
                 author: req.user._id,
                 title: req.body.title,
                 msg: req.body.msg,
-                timestamp: new Date().toLocaleDateString()
+                timestamp: new Date()
             })
             await newStory.save();
             res.redirect('/')
