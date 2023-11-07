@@ -45,8 +45,8 @@ exports.upgrade_account_post = [
 ]
 
 exports.create_story_post = [
-    body('title').trim().notEmpty().withMessage('Title required').isLength({ max: 40 }).withMessage(`Title can't exceed 40 characters`).escape(),
-    body('msg').optional().trim().isLength({ max: 250 }).withMessage(`Message can't exceed 250 characters`).escape(),
+    body('title').trim().notEmpty().withMessage('Title required').isLength({ max: 50 }).withMessage(`Title can't exceed 50 characters`).escape(),
+    body('msg').optional().trim().isLength({ max: 300 }).withMessage(`Message can't exceed 300 characters`).escape(),
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
         const errorsArray = errors.array();
