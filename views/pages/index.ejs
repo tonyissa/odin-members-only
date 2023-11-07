@@ -11,17 +11,23 @@
           <div class="card-body">
             <div class="d-flex justify-content-between">
               <h5 style="font-weight: 600;" class="card-title"><%= story.title %></h5>
-              <span style="font-size: 12px;" class="card-text fst-italic"><%= story.timestamp.toLocaleDateString() %></span>
+              <% if (currentUser) { %>
+                <span style="font-size: 12px;" class="card-text fst-italic"><%= story.timestamp.toLocaleDateString() %></span>
+              <% } else { %>
+                <span style="font-size: 12px;" class="card-text blurry fst-italic">XX/XX/XX</span>
+              <% } %>
             </div>
             <small class="fst-italic card-subtitle">by: 
               <% if (currentUser) { %>
                 <span class="semibold <%= story.author.membership === 'Admin' ? 'text-primary' : 'text-info' %>"><%= story.author.username %></span>
               <% } else { %>
-                <span class="blurry fw-bold"><%= story.author.blurry %></span>
+                <span class="blurry fw-bold"><%= story.author.blurryUsername %></span>
               <% } %>
             </small>
-            <% if (story.msg) { %>
+            <% if (story.msg && currentUser) { %>
               <p class="card-text mt-2"><%= story.msg %></p>
+            <% } else if (story.msg) { %>
+              <p class="card-text blurry mt-2"><%= story.blurryMsg %></p>
             <% } %>
           </div>
         </div>
