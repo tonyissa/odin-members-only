@@ -25,6 +25,10 @@ body {
     font-size: 12px;
 }
 
+.text-admin {
+    color: rgb(145, 20, 151) !important;
+}
+
 @media (max-width: 1800px) {
     .sm-display {
         width: 33% !important;

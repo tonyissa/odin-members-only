@@ -13,8 +13,14 @@
                 <% } else { %>
                     <li class="px-3 user-select-none">
                         <p class="navbar-text nav-custom mb-0 fw-bold">Status:
-                            <span class="navbar-text nav-custom <%= currentUser.membership === 'Admin' ? 'text-primary' : 'text-info' %>">
-                                <%= currentUser.membership %></span></p>
+                            <% if (currentUser.membership === 'Unregistered') { %>
+                                <span class="navbar-text nav-custom"><%= currentUser.membership %></span>
+                            <% } else if (currentUser.membership === 'Member') { %>
+                                <span class="navbar-text nav-custom text-info"><%= currentUser.membership %></span>
+                            <% } else { %>
+                                <span class="navbar-text nav-custom text-admin"><%= currentUser.membership %></span>
+                            <% } %>
+                        </p>
                     </li>
                     <li class="nav-item px-3">
                         <a href="/users/create-story" class="nav-link nav-custom">CREATE STORY</a>

@@ -6,6 +6,10 @@
   <body class="vh-100 d-flex flex-column">
     <%- include('../partials/nav'); %>
     <div class="container-fluid bg-dark flex-grow-1 p-2 p-sm-5 d-flex flex-column align-items-center">
+      <% if (!currentUser) { %>
+        <h1 class="text-light mb-5"><strong><span class="text-info">Members</span>Only <span class="text-info">special club</span></strong></h1>
+        <h5 class="text-light mb-5">Please <a href="/sign-in" class="link-info">sign in</a> to get full access to stories</h5>
+      <% } %>
       <% stories.forEach(story => { %>
         <div class="card my-2" style="color: rgb(197, 197, 197);">
           <div class="card-body">
@@ -19,7 +23,7 @@
             </div>
             <small class="fst-italic card-subtitle">by: 
               <% if (currentUser) { %>
-                <span class="semibold <%= story.author.membership === 'Admin' ? 'text-primary' : 'text-info' %>"><%= story.author.username %></span>
+                <span class="semibold <%= story.author.membership === 'Admin' ? 'text-admin' : 'text-info' %>"><%= story.author.username %></span>
               <% } else { %>
                 <span class="blurry fw-bold"><%= story.author.blurryUsername %></span>
               <% } %>
