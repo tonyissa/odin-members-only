@@ -49,8 +49,12 @@ exports.create_story_post = [
     body('msg').optional().trim().isLength({ max: 250 }).withMessage(`Message can't exceed 250 characters`).escape(),
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            res.render('pages/create-story', { errors: errors.array() })
+        const errorsArray = errors.array();
+        if (req.user.membership === "Unregistered") {
+            errorsArray.push({ msg: 'Please upgrade account before posting a story' })
+        }
+        if (!errors.isEmpty() || req.user.membership === "Unregistered") {
+            res.render('pages/create-story', { errors: errorsArray })
         } else {
             const newStory = new Story({
                 author: req.user._id,
