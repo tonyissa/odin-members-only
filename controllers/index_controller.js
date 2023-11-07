@@ -36,7 +36,7 @@ exports.sign_up_post = [
         }
         return true;
     }),
-    body('password').trim().notEmpty().withMessage('Password is required').isLength({min: 6}).withMessage('Password must be at least 6 characters long'),
+    body('password').trim().notEmpty().withMessage('Password is required').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
     body('confirmPassword').trim().notEmpty().withMessage('Please confirm password').custom((value, {req}) => {
         if (value !== req.body.password) { 
             throw new Error('Passwords do not match');

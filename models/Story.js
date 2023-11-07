@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const storySchema = new Schema({
     author: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    post: { type: String, maxLength: 200, required: true },
+    title: { type: String, required: true },
+    msg: { type: String },
     timestamp: { type: Date, required: true }
 });
 
