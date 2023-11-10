@@ -55,7 +55,7 @@ exports.sign_up_post = [
                         email: req.body.email,
                         password: hashedPassword,
                         username: req.body.username,
-                        memebership: "Unregistered"
+                        membership: "Unregistered"
                     });
                     await user.save();
                     res.redirect('/');
