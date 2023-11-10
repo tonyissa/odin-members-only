@@ -58,7 +58,9 @@ exports.sign_up_post = [
                         membership: "Unregistered"
                     });
                     await user.save();
-                    res.redirect('/');
+                    req.login(user, () => {
+                        res.redirect('/')
+                    })
                 } catch (err) {
                     return next(err);
                 }
