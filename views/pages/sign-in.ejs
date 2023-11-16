@@ -18,11 +18,9 @@
             <input type="password" class="form-control" name="password" placeholder="Password" />
           </div>
           <button type="submit" class="btn btn-primary mt-4">Log in</button>
-          <% if (locals.errors) { %>
+          <% if (errors) { %>
             <ul class="mt-3">
-              <% locals.errors.forEach(error => { %>
-                <li class="text-danger"><%= error.msg %></li>
-              <% }) %>
+                <li class="text-danger"><%= errors[errors.length - 1] %></li>
             </ul>
           <% } %>
         </form>

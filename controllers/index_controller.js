@@ -18,7 +18,7 @@ exports.sign_up_get = asyncHandler(async (req, res, next) => {
 })
 
 exports.sign_in_get = asyncHandler(async (req, res, next) => {
-    res.render('pages/sign-in');
+    res.render('pages/sign-in', { errors: req.session.messages });
 })
 
 // POST
@@ -71,5 +71,6 @@ exports.sign_up_post = [
 
 exports.sign_in_post = passport.authenticate("local", {
         successRedirect: "/",
-        failureRedirect: "/sign-in"
+        failureRedirect: "/sign-in",
+        failureMessage: true
       })
