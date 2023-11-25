@@ -11,13 +11,13 @@
         <h5 class="text-light mb-5">Please <a href="/sign-in" class="link-info">sign in</a> to get full access to stories</h5>
       <% } %>
       <% if (locals.currentUser?.membership === 'Unregistered') { %>
-      <h5 class="text-light mb-5">Remember to upgrade your account if you would like to post stories.</h5>
+        <h5 class="text-light mb-5">Remember to upgrade your account if you would like to post stories.</h5>
       <% } %>
-      <% stories.forEach(story => { %>
+      <% locals.stories.forEach(story => { %>
         <div class="card my-2" style="color: rgb(197, 197, 197);">
           <div class="card-body">
             <div class="d-flex justify-content-between">
-              <h5 style="font-weight: 600;" class="card-title"><%= story.title %></h5>
+              <h5 style="font-weight: 600;" class="card-title"><%- story.title %></h5>
               <% if (locals.currentUser) { %>
                 <span style="font-size: 12px;" class="card-text fst-italic"><%= story.timestamp.toLocaleDateString() %></span>
               <% } else { %>
@@ -26,15 +26,15 @@
             </div>
             <small class="fst-italic card-subtitle">by: 
               <% if (locals.currentUser) { %>
-                <span class="semibold <%= story.author.membership === 'Admin' ? 'text-admin' : 'text-info' %>"><%= story.author.username %></span>
+                <span class="semibold <%= story.author.membership === 'Admin' ? 'text-admin' : 'text-info' %>"><%- story.author.username %></span>
               <% } else { %>
-                <span class="blurry fw-bold"><%= story.author.blurryUsername %></span>
+                <span class="blurry fw-bold"><%- story.author.blurryUsername %></span>
               <% } %>
             </small>
             <% if (story?.msg && locals.currentUser) { %>
-              <p class="card-text mt-2"><%= story.msg %></p>
+              <p class="card-text mt-2"><%- story.msg %></p>
             <% } else if (story?.msg) { %>
-              <p class="card-text blurry mt-2"><%= story.blurryMsg %></p>
+              <p class="card-text blurry mt-2"><%- story.blurryMsg %></p>
             <% } %>
           </div>
         </div>
