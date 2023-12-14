@@ -4,6 +4,14 @@ const User = require('../models/User');
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 
+// CHECK IF LOGGED IN
+exports.checkAuth = function(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/sign-in')
+}
+
 // GET
 exports.upgrade_account_get = asyncHandler(async (req, res, next) => {
     res.render('pages/upgrade-account');
